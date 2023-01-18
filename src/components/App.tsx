@@ -1,8 +1,27 @@
+import Contact from './Contact';
+import Container from './Container';
+import Header from './Header';
+
 function App() {
   return (
-    <div>
-      <p>This is not a test!</p>
-    </div>
+    <>
+      <Header />
+      <main>
+        <Container>
+          <ul>
+            <li>
+              <Contact></Contact>
+              <Contact></Contact>
+              <Contact></Contact>
+              <Contact></Contact>
+              <Contact></Contact>
+              <Contact></Contact>
+              <Contact></Contact>
+            </li>
+          </ul>
+        </Container>
+      </main>
+    </>
   );
 }
 
