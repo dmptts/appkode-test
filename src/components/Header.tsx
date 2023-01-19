@@ -1,19 +1,19 @@
+import styled from 'styled-components';
 import Container from './Container';
 import Filter from './Filter';
+import Search from './Search';
 
 export default function Header() {
   return (
     <header>
-      <Container>
-        <label htmlFor="main-search">Поиск</label>
-        <input
-          type="search"
-          name="search"
-          id="main-search"
-          placeholder="Введите имя, тэг, почту..."
-        />
+      <HeaderContainer>
+        <Search />
         <Filter />
-      </Container>
+      </HeaderContainer>
     </header>
   );
 }
+
+const HeaderContainer = styled(Container)`
+  padding-top: 16px;
+`;

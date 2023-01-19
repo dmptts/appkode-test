@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 interface IContainerProps {
   children: ReactNode;
+  className?: string;
 }
 
-export default function Container({ children }: IContainerProps) {
-  return <StyledContainer>{children}</StyledContainer>;
+export default function Container({ children, className }: IContainerProps) {
+  return <StyledContainer className={className}>{children}</StyledContainer>;
 }
 
 const StyledContainer = styled.div`

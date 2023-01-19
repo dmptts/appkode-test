@@ -1,4 +1,4 @@
-import Contact from './Contact';
+import Contact from './ContactItem';
 import Container from './Container';
 import Header from './Header';
 
@@ -8,6 +8,7 @@ function App() {
       <Header />
       <main>
         <Container>
+          <h1>Книга контактов</h1>
           <ul>
             <li>
               <Contact></Contact>

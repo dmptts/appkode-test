@@ -69,7 +69,7 @@ export default createGlobalStyle`
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.3;
     font-family: "Inter", Arial, sans-serif;
     color: var(--charcoal);
 
