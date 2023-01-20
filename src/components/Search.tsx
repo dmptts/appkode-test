@@ -23,6 +23,8 @@ export default function Search() {
 const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin-bottom: 16px;
 `;
 
 const SearchTitle = styled.b`

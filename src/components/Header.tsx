@@ -5,14 +5,18 @@ import Search from './Search';
 
 export default function Header() {
   return (
-    <header>
+    <StyledHeader>
       <HeaderContainer>
         <Search />
         <Filter />
       </HeaderContainer>
-    </header>
+    </StyledHeader>
   );
 }
+
+const StyledHeader = styled.header`
+  border-bottom: 1px solid #c3c3c6;
+`;
 
 const HeaderContainer = styled(Container)`
   padding-top: 16px;
