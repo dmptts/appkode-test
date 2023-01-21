@@ -71,7 +71,7 @@ export default createGlobalStyle`
     font-size: 1rem;
     line-height: 1.3;
     font-family: "Inter", Arial, sans-serif;
-    color: var(--charcoal);
+    color: #050510;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -82,7 +82,7 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
 
-    background-color: var(--alex-blue);
+    background-color: #ffffff;
   }
 
   a {
