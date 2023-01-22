@@ -1,0 +1,133 @@
+import React, {
+  Dispatch,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+} from 'react';
+import styled from 'styled-components';
+import { ReactComponent as XIcon } from './../images/icon-x.svg';
+
+interface IModalProps {
+  children:
+    | [
+        ReactElement<PropsWithChildren<IModalBodyProps>>,
+        ReactElement<PropsWithChildren<IModalHeaderProps>>
+      ]
+    | ReactElement<PropsWithChildren<IModalBodyProps>>;
+  isOpened: boolean;
+  setIsModalOpened: Dispatch<boolean>;
+}
+
+export default function Modal({
+  children,
+  isOpened,
+  setIsModalOpened,
+}: IModalProps) {
+  return (
+    <>
+      <StyledModal isOpen={isOpened}>
+        <CloseBtn onClick={() => setIsModalOpened(false)}>
+          <StyledXIcon />
+          Закрыть
+        </CloseBtn>
+        {children}
+      </StyledModal>
+      <Overlay isOpen={isOpened} onClick={() => setIsModalOpened(false)} />
+    </>
+  );
+}
+
+const StyledModal = styled.div<{ isOpen: boolean }>`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  width: 375px;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  background-color: #ffffff;
+  border-radius: 20px;
+
+  transform: translate(-50%, -50%);
+`;
+
+const Overlay = styled.div<{ isOpen: boolean }>`
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+
+  background-color: rgba(5, 5, 16, 0.5);
+`;
+
+const StyledXIcon = styled(XIcon)`
+  width: 16px;
+  height: 16px;
+
+  fill: #c3c3c6;
+`;
+
+const CloseBtn = styled.button`
+  position: absolute;
+  top: 24px;
+  right: 23px;
+  z-index: 15;
+
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: 24px;
+  height: 24px;
+
+  font-size: 0;
+
+  background-color: #f7f7f8;
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  &:hover ${StyledXIcon}, &:active ${StyledXIcon} {
+    fill: #050510;
+  }
+`;
+
+interface IModalHeaderProps {
+  children: string;
+}
+
+function ModalHeader({ children }: IModalHeaderProps) {
+  return <ModalTitle>{children}</ModalTitle>;
+}
+
+Modal.Header = ModalHeader;
+
+const ModalTitle = styled.h2`
+  margin: 0;
+  margin-bottom: 23px;
+  padding-left: 48px;
+  padding-right: 48px;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+`;
+
+interface IModalBodyProps {
+  children: ReactNode;
+}
+
+function ModalBody({ children }: IModalBodyProps) {
+  return <div>{children}</div>;
+}
+
+Modal.Body = ModalBody;

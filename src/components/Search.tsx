@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 import { visuallyHidden } from '../global-styles';
 import { ReactComponent as SearchIcon } from './../images/icon-search.svg';
+import { ReactComponent as ListIcon } from './../images/icon-list.svg';
+import Sorting from './Sorting';
+import { Dispatch } from 'react';
 
-export default function Search() {
+interface ISortingProps {
+  setIsModalOpened: Dispatch<boolean>;
+}
+
+export default function Search({ setIsModalOpened }: ISortingProps) {
   return (
     <SearchContainer>
       <SearchTitle>Поиск</SearchTitle>
@@ -15,6 +22,9 @@ export default function Search() {
           id="contacts-search"
           placeholder="Введите имя, тэг, почту..."
         />
+        <SortingBtn onClick={() => setIsModalOpened(true)}>
+          <StyledListIcon />
+        </SortingBtn>
       </InputWrapper>
     </SearchContainer>
   );
@@ -81,6 +91,37 @@ const InputWrapper = styled.div`
   position: relative;
 
   &:focus-within ${StyledSearchIcon} {
+    fill: #050510;
+  }
+`;
+
+const StyledListIcon = styled(ListIcon)`
+  width: 24px;
+  height: 24px;
+
+  fill: #c3c3c6;
+`;
+
+const SortingBtn = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 12px;
+
+  margin: 0;
+  padding: 0;
+
+  width: 24px;
+  height: 24px;
+
+  font-size: 0;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  &:hover ${StyledListIcon}, &:active ${StyledListIcon} {
     fill: #050510;
   }
 `;
