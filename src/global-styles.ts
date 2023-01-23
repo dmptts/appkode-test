@@ -51,6 +51,16 @@ export default createGlobalStyle`
       url(${InterBoldWoff2}) format("woff2"),
       url(${InterBoldWoff}) format("woff");
   }
+
+  :root {
+    --color-default-white: #ffffff;
+    --color-text-default: #050510;
+    --color-text-light-primary: #97979b;
+    --color-text-light-secondary: #c3c3c6;
+    --color-text-light-thirdly: 55555c;
+    --color-bg: #f7f7f8;
+    --color-brand-violet: #6534ff;
+  }
   
   *,
   *::before,
@@ -71,7 +81,7 @@ export default createGlobalStyle`
     font-size: 1rem;
     line-height: 1.3;
     font-family: "Inter", Arial, sans-serif;
-    color: #050510;
+    color: var(--color-text-default);
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -82,7 +92,7 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
 
-    background-color: #ffffff;
+    background-color: var(--color-default-white);
   }
 
   a {

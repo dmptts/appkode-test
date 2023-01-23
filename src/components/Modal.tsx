@@ -42,7 +42,7 @@ const StyledModal = styled.div<{ isOpened: boolean }>`
   padding-left: 16px;
   padding-right: 16px;
 
-  background-color: #ffffff;
+  background-color: var(--color-default-white);
   border-radius: 20px;
 
   transform: translate(-50%, -50%);
@@ -65,7 +65,7 @@ const StyledXIcon = styled(XIcon)`
   width: 16px;
   height: 16px;
 
-  fill: #c3c3c6;
+  fill: var(--color-text-light-secondary);
 `;
 
 const CloseBtn = styled.button`
@@ -82,14 +82,14 @@ const CloseBtn = styled.button`
 
   font-size: 0;
 
-  background-color: #f7f7f8;
+  background-color: var(--color-bg);
   border: none;
   border-radius: 50%;
 
   cursor: pointer;
 
   &:hover ${StyledXIcon}, &:active ${StyledXIcon} {
-    fill: #050510;
+    fill: var(--color-text-default);
   }
 `;
 

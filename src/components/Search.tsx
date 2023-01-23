@@ -57,14 +57,14 @@ const StyledInput = styled.input`
 
   font-size: 0.93rem;
   font-weight: 500;
-  color: #050510;
+  color: var(--color-text-default);
 
-  background-color: #f7f7f8;
+  background-color: var(--color-bg);
   border: none;
   border-radius: 16px;
 
   &::placeholder {
-    color: #c3c3c6;
+    color: var(--color-text-light-secondary);
   }
 
   &:focus {
@@ -88,7 +88,7 @@ const InputWrapper = styled.div`
   position: relative;
 
   &:focus-within ${StyledSearchIcon} {
-    fill: #050510;
+    fill: var(--color-text-default);
   }
 `;
 
@@ -96,7 +96,7 @@ const StyledListIcon = styled(ListIcon)`
   width: 24px;
   height: 24px;
 
-  fill: #c3c3c6;
+  fill: var(--color-text-light-secondary);
 `;
 
 const SortingBtn = styled.button`
@@ -119,6 +119,6 @@ const SortingBtn = styled.button`
   transform: translateY(-50%);
 
   &:hover ${StyledListIcon}, &:active ${StyledListIcon} {
-    fill: #050510;
+    fill: var(--color-text-default);
   }
 `;

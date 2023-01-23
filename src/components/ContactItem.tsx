@@ -54,12 +54,12 @@ const Name = styled.h2`
 const Nickname = styled.span`
   font-size: 0.875rem;
   font-weight: 500;
-  color: #97979b;
+  color: var(--color-text-light-primary);
 `;
 
 const Speciality = styled.p`
   margin: 0;
 
   font-size: 0.8125rem;
-  color: #55555c;
+  color: var(--color-text-light-thirdly);
 `;

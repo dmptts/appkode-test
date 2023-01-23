@@ -77,7 +77,7 @@ const RadioItemLabel = styled.label<{ isActive: boolean }>`
     width: 20px;
     height: 20px;
 
-    border: 2px solid #6534ff;
+    border: 2px solid var(--color-brand-violet);
     border-radius: 50%;
 
     transform: translateY(-50%);
@@ -87,7 +87,7 @@ const RadioItemLabel = styled.label<{ isActive: boolean }>`
     isActive &&
     `
     &::before {
-      background-color: #6534ff;
+      background-color: var(--color-brand-violet);
     }
 
     &::after {
@@ -99,7 +99,7 @@ const RadioItemLabel = styled.label<{ isActive: boolean }>`
       width: 8px;
       height: 8px;
 
-      background-color: #ffffff;
+      background-color: #;
       border-radius: 50%;
 
       transform: translate(-50%, -50%);

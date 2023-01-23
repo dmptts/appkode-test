@@ -64,14 +64,16 @@ const TabButton = styled.button<{ isActive: boolean }>`
 
   font-size: 1.25rem;
   font-weight: 600;
-  color: ${({ isActive }) => (isActive ? '#050510' : '#97979b')};
+  color: ${({ isActive }) =>
+    isActive ? 'var(--color-text-default)' : 'var(--color-text-light-primary)'};
 
   background-color: transparent;
   border: none;
-  ${({ isActive }) => isActive && 'box-shadow: 0 -2px 0 0 #6534ff inset;'}
+  ${({ isActive }) =>
+    isActive && 'box-shadow: 0 -2px 0 0 var(--color-brand-violet) inset;'}
   cursor: ${({ isActive }) => !isActive && 'pointer'};
 
   &:hover {
-    box-shadow: 0 -2px 0 0 #6534ff inset;
+    box-shadow: 0 -2px 0 0 var(--color-brand-violet) inset;
   }
 `;

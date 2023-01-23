@@ -15,7 +15,7 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
-  border-bottom: 1px solid #c3c3c6;
+  border-bottom: 1px solid var(--color-text-light-secondary);
 `;
 
 const HeaderContainer = styled(Container)`
