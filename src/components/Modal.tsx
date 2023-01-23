@@ -1,49 +1,41 @@
-import React, {
-  Dispatch,
-  PropsWithChildren,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import React, { PropsWithChildren, ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
+import { useModal } from '../hooks';
 import { ReactComponent as XIcon } from './../images/icon-x.svg';
 
 interface IModalProps {
-  children:
-    | [
-        ReactElement<PropsWithChildren<IModalBodyProps>>,
-        ReactElement<PropsWithChildren<IModalHeaderProps>>
-      ]
-    | ReactElement<PropsWithChildren<IModalBodyProps>>;
-  isOpened: boolean;
-  setIsModalOpened: Dispatch<boolean>;
+  children: [
+    ReactElement<PropsWithChildren<IModalBodyProps>>,
+    ReactElement<PropsWithChildren<IModalHeaderProps>>
+  ];
+  name: string;
 }
 
-export default function Modal({
-  children,
-  isOpened,
-  setIsModalOpened,
-}: IModalProps) {
+export default function Modal({ children, name }: IModalProps) {
+  const { activeModal, closeModal } = useModal();
+  const isOpened = activeModal === name;
+
   return (
     <>
-      <StyledModal isOpen={isOpened}>
-        <CloseBtn onClick={() => setIsModalOpened(false)}>
+      <StyledModal isOpened={isOpened}>
+        <CloseBtn onClick={closeModal}>
           <StyledXIcon />
           Закрыть
         </CloseBtn>
         {children}
       </StyledModal>
-      <Overlay isOpen={isOpened} onClick={() => setIsModalOpened(false)} />
+      <Overlay isOpen={isOpened} onClick={closeModal} />
     </>
   );
 }
 
-const StyledModal = styled.div<{ isOpen: boolean }>`
+const StyledModal = styled.div<{ isOpened: boolean }>`
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: 10;
 
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  display: ${({ isOpened }) => (isOpened ? 'block' : 'none')};
   width: 375px;
   padding-top: 24px;
   padding-bottom: 16px;

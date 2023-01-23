@@ -1,5 +1,5 @@
-import ContactListPage from './ContactListPage';
+import MainPage from './MainPage';
 
 export default function App() {
-  return <ContactListPage />;
+  return <MainPage />;
 }

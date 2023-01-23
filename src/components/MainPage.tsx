@@ -1,19 +1,15 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import { visuallyHidden } from '../global-styles';
 import ContactItem from './ContactItem';
 import Container from './Container';
 import Header from './Header';
-import Modal from './Modal';
-import RadioList from './RadioList';
+import SortingModal from './SortingModal';
 
-export default function ContactListPage() {
-  const [isModalOpened, setIsModalOpened] = useState(false);
-
+export default function MainPage() {
   return (
     <>
       <PageContainer>
-        <Header setIsModalOpened={setIsModalOpened} />
+        <Header />
         <MainContainer>
           <Container>
             <PageTitle>Книга контактов</PageTitle>
@@ -46,15 +42,7 @@ export default function ContactListPage() {
           </Container>
         </MainContainer>
       </PageContainer>
-      <Modal isOpened={isModalOpened} setIsModalOpened={setIsModalOpened}>
-        <Modal.Header>Сортировка</Modal.Header>
-        <Modal.Body>
-          <RadioList name="sorting" value="alphabet">
-            <RadioList.Item value="alphabet">По алфавиту</RadioList.Item>
-            <RadioList.Item value="birthday">По дню рождения</RadioList.Item>
-          </RadioList>
-        </Modal.Body>
-      </Modal>
+      <SortingModal />
     </>
   );
 }

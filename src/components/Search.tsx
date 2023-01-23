@@ -2,14 +2,11 @@ import styled from 'styled-components';
 import { visuallyHidden } from '../global-styles';
 import { ReactComponent as SearchIcon } from './../images/icon-search.svg';
 import { ReactComponent as ListIcon } from './../images/icon-list.svg';
-import Sorting from './Sorting';
-import { Dispatch } from 'react';
+import { useModal } from '../hooks';
 
-interface ISortingProps {
-  setIsModalOpened: Dispatch<boolean>;
-}
+export default function Search() {
+  const { openModal } = useModal();
 
-export default function Search({ setIsModalOpened }: ISortingProps) {
   return (
     <SearchContainer>
       <SearchTitle>Поиск</SearchTitle>
@@ -22,7 +19,7 @@ export default function Search({ setIsModalOpened }: ISortingProps) {
           id="contacts-search"
           placeholder="Введите имя, тэг, почту..."
         />
-        <SortingBtn onClick={() => setIsModalOpened(true)}>
+        <SortingBtn onClick={() => openModal('contacts-sorting')}>
           <StyledListIcon />
         </SortingBtn>
       </InputWrapper>
