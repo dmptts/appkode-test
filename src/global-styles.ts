@@ -59,6 +59,8 @@ export default createGlobalStyle`
     --color-text-light-secondary: #c3c3c6;
     --color-text-light-thirdly: 55555c;
     --color-bg: #f7f7f8;
+    --color-bg-secondary: #f3f3f6;
+    --color-bg-thirdly: #e5e5eb;
     --color-brand-violet: #6534ff;
   }
   
