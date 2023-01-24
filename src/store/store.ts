@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer from './contactsSlice';
 import modalsReducer from './modalSlice';
 import filtersReducer from './filtersSlice';
+import searchReducer from './searchSlice';
 
 const store = configureStore({
   reducer: {
     contacts: contactsReducer,
     modals: modalsReducer,
     filter: filtersReducer,
+    search: searchReducer,
   },
 });
 

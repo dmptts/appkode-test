@@ -2,10 +2,19 @@ import styled from 'styled-components';
 import { visuallyHidden } from '../global-styles';
 import { ReactComponent as SearchIcon } from './../images/icon-search.svg';
 import { ReactComponent as ListIcon } from './../images/icon-list.svg';
-import { useModal } from '../hooks';
+import { useAppDispatch, useAppSelector, useModal } from '../hooks';
+import { ChangeEvent } from 'react';
+import { setSearchTerm } from '../store/searchSlice';
+import { selectContactsSearch } from '../store/selectors';
 
 export default function Search() {
+  const dispatch = useAppDispatch();
+  const searchTerm = useAppSelector(selectContactsSearch);
   const { openModal } = useModal();
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchTerm(e.target.value));
+  };
 
   return (
     <SearchContainer>
@@ -18,6 +27,8 @@ export default function Search() {
           name="contacts-search"
           id="contacts-search"
           placeholder="Введите имя, тэг, почту..."
+          value={searchTerm}
+          onChange={handleChange}
         />
         <SortingBtn onClick={() => openModal('contacts-sorting')}>
           <StyledListIcon />
