@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactElement } from 'react';
+import React, { Dispatch, PropsWithChildren, ReactElement } from 'react';
 import { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
@@ -15,9 +15,8 @@ export default function Tabs({ children }: ITabsProps) {
   const TabsWithInjectedProps = React.Children.map(children, (child, index) =>
     React.cloneElement(child, {
       isActive: index === activeTab,
-      clickHandler() {
+      setActiveTab() {
         setActiveTab(index);
-        child.props.clickHandler?.();
       },
     })
   );
@@ -37,13 +36,24 @@ const TabsList = styled.ul`
 interface ITabProps {
   children: ReactNode;
   isActive?: boolean;
+  setActiveTab?: () => void;
   clickHandler?: () => void;
 }
 
-function Tab({ children, isActive = false, clickHandler }: ITabProps) {
+function Tab({
+  children,
+  isActive = false,
+  setActiveTab,
+  clickHandler,
+}: ITabProps) {
+  const handleClick = () => {
+    setActiveTab?.();
+    clickHandler?.();
+  };
+
   return (
     <TabItem>
-      <TabButton type="button" isActive={isActive} onClick={clickHandler}>
+      <TabButton type="button" isActive={isActive} onClick={handleClick}>
         {children}
       </TabButton>
     </TabItem>
