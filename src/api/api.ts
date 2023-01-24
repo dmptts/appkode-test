@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { selectAllContacts } from '../store/selectors';
+import { RootState } from '../store/store';
 
 const api = axios.create({
   baseURL:
@@ -11,7 +13,7 @@ export const getAllContacts = createAsyncThunk(
   async () => {
     try {
       const response = await api.get('/users?__example=all');
-      console.log(response.data.items);
+      console.log(response);
       return response.data.items;
     } catch (err) {
       if (err instanceof Error) {
@@ -20,6 +22,13 @@ export const getAllContacts = createAsyncThunk(
 
       throw new Error('Произошла ошибка!');
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const state = getState() as RootState;
+      const contacts = selectAllContacts(state);
+      return contacts.length === 0;
+    },
   }
 );
 

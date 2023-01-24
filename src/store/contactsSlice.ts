@@ -3,15 +3,13 @@ import { getAllContacts, getApiError } from '../api/api';
 import { IContact } from '../const';
 
 interface IInitialState {
-  all: IContact[];
-  design: IContact[];
+  entities: IContact[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: IInitialState = {
-  all: [],
-  design: [],
+  entities: [],
   loading: false,
   error: null,
 };
@@ -26,7 +24,7 @@ const contactsSlice = createSlice({
         state.loading = true;
       })
       .addCase(getAllContacts.fulfilled, (state, action) => {
-        state.all = action.payload;
+        state.entities = action.payload;
         state.loading = false;
       })
       .addCase(getApiError.rejected, (state, action) => {

@@ -5,7 +5,7 @@ export const selectOpenedModal = (state: RootState) => state.modals.activeModal;
 export const selectContactsError = (state: RootState) => state.contacts.error;
 export const selectContactsLoadingStatus = (state: RootState) =>
   state.contacts.loading;
-export const selectAllContacts = (state: RootState) => state.contacts.all;
+export const selectAllContacts = (state: RootState) => state.contacts.entities;
 export const selectContactsFilter = (state: RootState) => state.filter.contacts;
 export const selectContactsSearch = (state: RootState) => state.search.contacts;
 
