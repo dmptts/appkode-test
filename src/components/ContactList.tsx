@@ -1,33 +1,17 @@
 import styled from 'styled-components';
+import { IContact } from '../const';
 import ContactItem from './ContactItem';
 
-export default function ContactList() {
+interface IContactListProps {
+  contacts: IContact[];
+}
+
+export default function ContactList({ contacts }: IContactListProps) {
   return (
     <List>
-      <li>
-        <ContactItem />
-      </li>
-      <li>
-        <ContactItem />
-      </li>
-      <li>
-        <ContactItem />
-      </li>
-      <li>
-        <ContactItem />
-      </li>
-      <li>
-        <ContactItem />
-      </li>
-      <li>
-        <ContactItem />
-      </li>
-      <li>
-        <ContactItem />
-      </li>
-      <li>
-        <ContactItem />
-      </li>
+      {contacts.map((contact) => (
+        <ContactItem key={contact.id} contact={contact} />
+      ))}
     </List>
   );
 }

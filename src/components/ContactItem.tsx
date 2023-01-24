@@ -1,23 +1,32 @@
 import styled from 'styled-components';
+import { IContact } from '../const';
 import userpicPlaceholder from '../images/userpic-placeholder.png';
 import userpicPlaceholder2x from '../images/userpic-placeholder@2x.png';
 
-export default function ContactItem() {
+interface IContactItemProps {
+  contact: IContact;
+}
+
+export default function ContactItem({ contact }: IContactItemProps) {
+  const { avatarUrl, firstName, lastName, userTag, position } = contact;
+
   return (
     <StyledContactItem>
       <UserPic
-        src={userpicPlaceholder}
-        srcSet={userpicPlaceholder2x}
+        src={avatarUrl ? avatarUrl : userpicPlaceholder}
+        srcSet={avatarUrl ? avatarUrl : userpicPlaceholder2x}
         width="72"
         height="72"
-        alt="Аватар пользователя"
+        alt={`Аватар пользователя ${firstName} ${lastName}`}
       />
       <div>
         <NameWrapper>
-          <Name>Алексей Миногаров</Name>
-          <Nickname>mi</Nickname>
+          <Name>
+            {firstName} {lastName}
+          </Name>
+          <UserTag>{userTag}</UserTag>
         </NameWrapper>
-        <Speciality>Analyst</Speciality>
+        <Position>{position}</Position>
       </div>
     </StyledContactItem>
   );
@@ -35,6 +44,8 @@ const StyledContactItem = styled.div`
 const UserPic = styled.img`
   width: 72px;
   height: 72px;
+
+  border-radius: 50%;
 `;
 
 const NameWrapper = styled.div`
@@ -51,13 +62,13 @@ const Name = styled.h2`
   font-weight: 500;
 `;
 
-const Nickname = styled.span`
+const UserTag = styled.span`
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-text-light-primary);
 `;
 
-const Speciality = styled.p`
+const Position = styled.p`
   margin: 0;
 
   font-size: 0.8125rem;
