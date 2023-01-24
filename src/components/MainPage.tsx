@@ -14,6 +14,7 @@ import {
 } from '../store/selectors';
 import ContactList from './ContactList';
 import ContactSkeletonList from './ContactSkeletonList';
+import MainPageNoResultsMessage from './MainPageNoResultsMessage';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
@@ -36,6 +37,8 @@ export default function MainPage() {
               <ContactSkeletonList />
             ) : error ? (
               <MainPageErrorMessage />
+            ) : contacts.length === 0 ? (
+              <MainPageNoResultsMessage />
             ) : (
               <ContactList contacts={contacts} />
             )}
