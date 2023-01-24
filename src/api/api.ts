@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { IContact } from '../const';
 
 const api = axios.create({
   baseURL:
@@ -11,13 +10,9 @@ export const getAllContacts = createAsyncThunk(
   'contacts/getAllContacts',
   async () => {
     try {
-      const response = await api.get<IContact[]>('/users?__example=all');
-
-      if (response.statusText !== 'OK') {
-        throw new Error('Произошла ошибка!');
-      }
-
-      return response.data;
+      const response = await api.get('/users?__example=all');
+      console.log(response.data.items);
+      return response.data.items;
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(`Произошла ошибка: ${err.message}`);
@@ -30,15 +25,9 @@ export const getAllContacts = createAsyncThunk(
 
 export const getApiError = createAsyncThunk(
   'contacts/getApiError',
-  async (_, { rejectWithValue }) => {
+  async () => {
     try {
-      const response = await api.get<IContact[]>(
-        '/users?__code=500&__dynamic=true'
-      );
-
-      if (response.statusText !== 'OK') {
-        throw new Error('Произошла ошибка!');
-      }
+      const response = await api.get('/users?__code=500&__dynamic=true');
 
       return response.data;
     } catch (err) {

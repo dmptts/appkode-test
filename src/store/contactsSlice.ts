@@ -4,12 +4,14 @@ import { IContact } from '../const';
 
 interface IInitialState {
   all: IContact[];
+  design: IContact[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: IInitialState = {
   all: [],
+  design: [],
   loading: false,
   error: null,
 };

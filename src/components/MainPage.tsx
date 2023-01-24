@@ -7,15 +7,22 @@ import Container from './Container';
 import Header from './Header';
 import SortingModal from './SortingModal';
 import MainPageErrorMessage from './MainPageErrorMessage';
-import { selectContactsError } from '../store/selectors';
+import {
+  selectContactsByDepartment,
+  selectContactsError,
+  selectContactsLoadingStatus,
+} from '../store/selectors';
 import ContactList from './ContactList';
+import ContactSkeletonList from './ContactSkeletonList';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
+  const contacts = useAppSelector(selectContactsByDepartment);
+  const loading = useAppSelector(selectContactsLoadingStatus);
   const error = useAppSelector(selectContactsError);
 
   useEffect(() => {
-    dispatch(getApiError());
+    dispatch(getAllContacts());
   }, [dispatch]);
 
   return (
@@ -25,7 +32,13 @@ export default function MainPage() {
         <MainContainer>
           <InnerMainContainer>
             <PageTitle>Книга контактов</PageTitle>
-            {error ? <MainPageErrorMessage /> : <ContactList />}
+            {loading ? (
+              <ContactSkeletonList />
+            ) : error ? (
+              <MainPageErrorMessage />
+            ) : (
+              <ContactList contacts={contacts} />
+            )}
           </InnerMainContainer>
         </MainContainer>
       </PageContainer>
@@ -55,5 +68,6 @@ const MainContainer = styled.main`
 
 const InnerMainContainer = styled(Container)`
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
 `;
