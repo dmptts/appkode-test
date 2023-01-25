@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../hooks';
 import { contactsSelectors } from '../store/contactsSlice';
 import { EntityId } from '@reduxjs/toolkit';
+import ContactPageHeader from './ContactPageHeader';
 
 export default function ContactPage() {
   const { contactId } = useParams();
@@ -9,13 +10,5 @@ export default function ContactPage() {
     contactsSelectors.selectById(state, contactId as EntityId)
   );
 
-  return (
-    <>
-      {contact && (
-        <h1>
-          Страница {contact.firstName} {contact.lastName}!
-        </h1>
-      )}
-    </>
-  );
+  return <>{contact && <ContactPageHeader contact={contact} />}</>;
 }
