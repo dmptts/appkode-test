@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IContact } from '../const';
 import userpicPlaceholder from '../images/userpic-placeholder.png';
@@ -19,7 +20,7 @@ export default function ContactItem({ contact }: IContactItemProps) {
         height="72"
         alt={`Аватар пользователя ${firstName} ${lastName}`}
       />
-      <div>
+      <Link to={`/contact/${contact.id}`}>
         <NameWrapper>
           <Name>
             {firstName} {lastName}
@@ -27,7 +28,7 @@ export default function ContactItem({ contact }: IContactItemProps) {
           <UserTag>{userTag}</UserTag>
         </NameWrapper>
         <Position>{position}</Position>
-      </div>
+      </Link>
     </StyledContactItem>
   );
 }

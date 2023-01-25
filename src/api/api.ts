@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { selectAllContacts } from '../store/selectors';
+import { contactsSelectors } from '../store/contactsSlice';
 import { RootState } from '../store/store';
 
 const api = axios.create({
@@ -26,7 +26,7 @@ export const getAllContacts = createAsyncThunk(
   {
     condition: (_, { getState }) => {
       const state = getState() as RootState;
-      const contacts = selectAllContacts(state);
+      const contacts = contactsSelectors.selectAll(state);
       return contacts.length === 0;
     },
   }

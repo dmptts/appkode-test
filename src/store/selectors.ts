@@ -1,16 +1,16 @@
 import { createSelector } from '@reduxjs/toolkit';
+import { contactsSelectors } from './contactsSlice';
 import { RootState } from './store';
 
 export const selectOpenedModal = (state: RootState) => state.modals.activeModal;
 export const selectContactsError = (state: RootState) => state.contacts.error;
 export const selectContactsLoadingStatus = (state: RootState) =>
   state.contacts.loading;
-export const selectAllContacts = (state: RootState) => state.contacts.entities;
 export const selectContactsFilter = (state: RootState) => state.filter.contacts;
 export const selectContactsSearch = (state: RootState) => state.search.contacts;
 
 export const selectContactsByDepartment = createSelector(
-  [selectAllContacts, selectContactsFilter],
+  [contactsSelectors.selectAll, selectContactsFilter],
   (allContacts, activeFilter) => {
     if (activeFilter === 'all') {
       return allContacts;

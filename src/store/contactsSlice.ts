@@ -1,22 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { getAllContacts, getApiError } from '../api/api';
 import { IContact } from '../const';
+import { RootState } from './store';
 
-interface IInitialState {
-  entities: IContact[];
+const contactsAdapter = createEntityAdapter<IContact>();
+
+interface IExtendedEntityAdapterState {
   loading: boolean;
   error: string | null;
 }
 
-const initialState: IInitialState = {
-  entities: [],
+const initialState: IExtendedEntityAdapterState = {
   loading: false,
   error: null,
 };
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState,
+  initialState: contactsAdapter.getInitialState(initialState),
   reducers: {},
   extraReducers(builder) {
     builder
@@ -24,7 +25,7 @@ const contactsSlice = createSlice({
         state.loading = true;
       })
       .addCase(getAllContacts.fulfilled, (state, action) => {
-        state.entities = action.payload;
+        contactsAdapter.setAll(state, action.payload);
         state.loading = false;
       })
       .addCase(getApiError.rejected, (state, action) => {
@@ -35,3 +36,6 @@ const contactsSlice = createSlice({
 });
 
 export default contactsSlice.reducer;
+export const contactsSelectors = contactsAdapter.getSelectors(
+  (state: RootState) => state.contacts
+);
