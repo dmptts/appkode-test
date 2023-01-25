@@ -55,6 +55,13 @@ const StyledContainer = styled(Container)`
   padding-bottom: 24px;
 `;
 
+const StyledChevronIcon = styled(ChevronIcon)`
+  width: 24px;
+  height: 24px;
+
+  fill: var(--color-text-default);
+`;
+
 const BackLink = styled(Link)`
   position: absolute;
   top: 22px;
@@ -65,13 +72,10 @@ const BackLink = styled(Link)`
   height: 24px;
 
   font-size: 0;
-`;
 
-const StyledChevronIcon = styled(ChevronIcon)`
-  width: 24px;
-  height: 24px;
-
-  fill: var(--color-text-default);
+  &:hover ${StyledChevronIcon} {
+    fill: var(--color-brand-violet);
+  }
 `;
 
 const UserPic = styled.img`

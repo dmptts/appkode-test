@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { getAllContacts } from '../api/api';
+import { useAppDispatch } from '../hooks';
 import ContactPage from './ContactPage';
 import MainPage from './MainPage';
 
@@ -14,5 +17,11 @@ const router = createHashRouter([
 ]);
 
 export default function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAllContacts());
+  }, [dispatch]);
+
   return <RouterProvider router={router} />;
 }

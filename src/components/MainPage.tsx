@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
 import styled from 'styled-components';
-import { getAllContacts } from '../api/api';
 import { visuallyHidden } from '../global-styles';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks';
 import Container from './Container';
 import Header from './Header';
 import SortingModal from './SortingModal';
@@ -17,14 +15,9 @@ import ContactSkeletonList from './ContactSkeletonList';
 import MainPageNoResultsMessage from './MainPageNoResultsMessage';
 
 export default function MainPage() {
-  const dispatch = useAppDispatch();
   const contacts = useAppSelector(selectContactsBySearch);
   const loading = useAppSelector(selectContactsLoadingStatus);
   const error = useAppSelector(selectContactsError);
-
-  useEffect(() => {
-    dispatch(getAllContacts());
-  }, [dispatch]);
 
   return (
     <>
