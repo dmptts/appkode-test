@@ -27,6 +27,13 @@ export const getAllContacts = createAsyncThunk(
     condition: (_, { getState }) => {
       const state = getState() as RootState;
       const contacts = contactsSelectors.selectAll(state);
+      const expirationAt = state.contacts.expiresAt;
+
+      if (expirationAt) {
+        const isExpired = expirationAt < Date.now();
+        return isExpired;
+      }
+
       return contacts.length === 0;
     },
   }

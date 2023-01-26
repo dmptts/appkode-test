@@ -51,3 +51,7 @@ export const formatPhoneNumber = (phoneNumber: string) => {
     `$1 ($2) $3 $4 $5`
   );
 };
+
+export const addMinutesToDate = (date: Date, minutes: number) => {
+  return date.getTime() + minutes * 1000 * 60;
+};
