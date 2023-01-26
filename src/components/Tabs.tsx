@@ -2,21 +2,27 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
-interface ITabsProps {
+interface ITabsProps<T> {
   children:
-    | ReactElement<PropsWithChildren<ITabProps>>
-    | ReactElement<PropsWithChildren<ITabProps>>[];
-  clickHandler?: () => void;
+    | ReactElement<PropsWithChildren<ITabProps<T>>>
+    | ReactElement<PropsWithChildren<ITabProps<T>>>[];
+  value: T;
+  clickHandler?: (value: T) => void;
 }
 
-export default function Tabs({ children }: ITabsProps) {
-  const [activeTab, setActiveTab] = useState(0);
+export default function Tabs<T>({
+  children,
+  value,
+  clickHandler,
+}: ITabsProps<T>) {
+  const [activeTab, setActiveTab] = useState(value);
 
-  const TabsWithInjectedProps = React.Children.map(children, (child, index) =>
+  const TabsWithInjectedProps = React.Children.map(children, (child) =>
     React.cloneElement(child, {
-      isActive: index === activeTab,
-      setActiveTab() {
-        setActiveTab(index);
+      isActive: child.props.value === activeTab,
+      clickHandler() {
+        setActiveTab(child.props.value);
+        clickHandler?.(child.props.value);
       },
     })
   );
@@ -33,27 +39,27 @@ const TabsList = styled.ul`
   list-style: none;
 `;
 
-interface ITabProps {
+interface ITabProps<T> {
   children: ReactNode;
+  value: T;
   isActive?: boolean;
-  setActiveTab?: () => void;
   clickHandler?: () => void;
 }
 
-function Tab({
+function Tab<T extends string | number>({
   children,
+  value,
   isActive = false,
-  setActiveTab,
   clickHandler,
-}: ITabProps) {
-  const handleClick = () => {
-    setActiveTab?.();
-    clickHandler?.();
-  };
-
+}: ITabProps<T>) {
   return (
     <TabItem>
-      <TabButton type="button" isActive={isActive} onClick={handleClick}>
+      <TabButton
+        type="button"
+        isActive={isActive}
+        onClick={clickHandler}
+        value={value}
+      >
         {children}
       </TabButton>
     </TabItem>
