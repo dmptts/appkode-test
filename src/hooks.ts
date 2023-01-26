@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import {
   closeModal as closeModalAction,
@@ -18,3 +19,19 @@ export const useModal = () => {
 
   return { activeModal, openModal, closeModal };
 };
+
+export function useDebounce<T>(value: T, delay: number = 750) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
