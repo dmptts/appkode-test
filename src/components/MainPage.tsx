@@ -54,6 +54,7 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: var(--app-height);
 
   overflow-y: hidden;
 `;

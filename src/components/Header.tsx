@@ -8,8 +8,8 @@ export default function Header() {
     <StyledHeader>
       <HeaderContainer>
         <Search />
-        <Filter />
       </HeaderContainer>
+      <Filter />
     </StyledHeader>
   );
 }
