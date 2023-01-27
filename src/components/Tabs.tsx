@@ -75,13 +75,14 @@ const TabItem = styled.li`
 const TabButton = styled.button<{ isActive: boolean }>`
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
 
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   color: ${({ isActive }) =>
     isActive ? 'var(--color-text-default)' : 'var(--color-text-light-primary)'};
+  letter-spacing: -0.6px;
 
   background-color: transparent;
   border: none;

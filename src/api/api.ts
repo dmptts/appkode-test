@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { ConnectionStatuses } from '../const';
 import { contactsSelectors } from '../store/contactsSlice';
 import { RootState } from '../store/store';
 
@@ -28,6 +29,11 @@ export const getAllContacts = createAsyncThunk(
       const state = getState() as RootState;
       const contacts = contactsSelectors.selectAll(state);
       const expirationAt = state.contacts.expiresAt;
+      const connectionStatus = state.connection.status;
+
+      if (connectionStatus === ConnectionStatuses.PENDING) {
+        return true;
+      }
 
       if (expirationAt) {
         const isExpired = expirationAt < Date.now();

@@ -10,11 +10,16 @@ import {
 } from '../hooks';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { setSearchTerm } from '../store/searchSlice';
-import { selectContactsSearch } from '../store/selectors';
+import {
+  selectConnectionStatus,
+  selectContactsSearch,
+} from '../store/selectors';
+import { ConnectionStatuses } from '../const';
 
 export default function Search() {
   const dispatch = useAppDispatch();
   const storedSearchTerm = useAppSelector(selectContactsSearch);
+  const connectionStatus = useAppSelector(selectConnectionStatus);
   const { openModal } = useModal();
   const [searchQuery, setSearchQuery] = useState(storedSearchTerm);
   const debouncedSearch = useDebounce(searchQuery);
@@ -29,23 +34,31 @@ export default function Search() {
 
   return (
     <SearchContainer>
-      <SearchTitle>Поиск</SearchTitle>
-      <InputWrapper>
-        <StyledLabel htmlFor="main-search">Поиск</StyledLabel>
-        <StyledSearchIcon />
-        <StyledInput
-          type="search"
-          name="contacts-search"
-          id="contacts-search"
-          placeholder="Введите имя, тэг, почту..."
-          value={searchQuery}
-          onChange={handleChange}
-        />
-        <SortingBtn onClick={() => openModal('contacts-sorting')}>
-          <StyledListIcon />
-          Сортировка
-        </SortingBtn>
-      </InputWrapper>
+      <SearchTitle connectionStatus={connectionStatus}>Поиск</SearchTitle>
+      {connectionStatus === ConnectionStatuses.OFFLINE ? (
+        <SearchErrorMessage>
+          Не могу обновить данные. Проверь соединение с интернетом.
+        </SearchErrorMessage>
+      ) : connectionStatus === ConnectionStatuses.PENDING ? (
+        <SearchErrorMessage>Секундочку, гружусь...</SearchErrorMessage>
+      ) : (
+        <InputWrapper>
+          <StyledLabel htmlFor="main-search">Поиск</StyledLabel>
+          <StyledSearchIcon />
+          <StyledInput
+            type="search"
+            name="contacts-search"
+            id="contacts-search"
+            placeholder="Введи имя, тэг, почту..."
+            value={searchQuery}
+            onChange={handleChange}
+          />
+          <SortingBtn onClick={() => openModal('contacts-sorting')}>
+            <StyledListIcon />
+            Сортировка
+          </SortingBtn>
+        </InputWrapper>
+      )}
     </SearchContainer>
   );
 }
@@ -53,16 +66,19 @@ export default function Search() {
 const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  margin-bottom: 16px;
 `;
 
-const SearchTitle = styled.b`
-  margin-bottom: 18px;
+const SearchTitle = styled.b<{ connectionStatus: ConnectionStatuses }>`
+  margin-bottom: 16px;
   padding-left: 8px;
 
   font-size: 1.5rem;
   font-weight: 700;
+
+  color: ${({ connectionStatus }) =>
+    connectionStatus === ConnectionStatuses.ONLINE
+      ? 'var(--color-text-default)'
+      : 'var(--color-default-white)'};
 `;
 
 const StyledLabel = styled.label`
@@ -144,4 +160,14 @@ const SortingBtn = styled.button`
   &:hover ${StyledListIcon}, &:active ${StyledListIcon} {
     fill: var(--color-brand-violet);
   }
+`;
+
+const SearchErrorMessage = styled.p`
+  margin: 0;
+  margin-bottom: 20px;
+  padding-left: 8px;
+
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-default-white);
 `;

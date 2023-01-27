@@ -6,6 +6,7 @@ import Header from './Header';
 import SortingModal from './SortingModal';
 import MainPageErrorMessage from './MainPageErrorMessage';
 import {
+  selectConnectionStatus,
   selectContactsBySearch,
   selectContactsError,
   selectContactsLoadingStatus,
@@ -15,9 +16,11 @@ import ContactSkeletonList from './ContactSkeletonList';
 import MainPageNoResultsMessage from './MainPageNoResultsMessage';
 import { useEffect } from 'react';
 import { getAllContacts } from '../api/api';
+import { ConnectionStatuses } from '../const';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
+  const connectionStatus = useAppSelector(selectConnectionStatus);
   const contacts = useAppSelector(selectContactsBySearch);
   const loading = useAppSelector(selectContactsLoadingStatus);
   const error = useAppSelector(selectContactsError);
@@ -25,6 +28,12 @@ export default function MainPage() {
   useEffect(() => {
     dispatch(getAllContacts());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (connectionStatus === ConnectionStatuses.PENDING) {
+      dispatch(getAllContacts());
+    }
+  }, [connectionStatus, dispatch]);
 
   return (
     <>

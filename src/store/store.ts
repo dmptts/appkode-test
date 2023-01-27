@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import connectionReducer from './connectionSlice';
 import contactsReducer from './contactsSlice';
 import modalsReducer from './modalSlice';
 import filtersReducer from './filtersSlice';
@@ -7,6 +8,7 @@ import sortingReducer from './sortingSlice';
 
 const store = configureStore({
   reducer: {
+    connection: connectionReducer,
     contacts: contactsReducer,
     modals: modalsReducer,
     filter: filtersReducer,

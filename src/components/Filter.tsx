@@ -36,6 +36,8 @@ export default function Filter() {
 }
 
 const FilterContainer = styled(Container)`
+  padding-top: 8px;
+
   overflow: auto;
   scrollbar-width: none;
 

@@ -1,3 +1,9 @@
+export const enum ConnectionStatuses {
+  ONLINE = 'online',
+  OFFLINE = 'offline',
+  PENDING = 'pending',
+}
+
 export interface IContact {
   id: string;
   [key: string]: string;
