@@ -2,13 +2,13 @@ import styled, { keyframes } from 'styled-components';
 
 export default function ContactItemSkeleton() {
   return (
-    <SkeletonContainer>
+    <Skeleton>
       <UserpicSkeleton />
       <div>
         <NameSkeleton />
         <SpecialitySkeleton />
       </div>
-    </SkeletonContainer>
+    </Skeleton>
   );
 }
 
@@ -18,7 +18,7 @@ const PulseAnimation = keyframes`
   110% {background-color: var(--color-bg-secondary)}
 `;
 
-const SkeletonContainer = styled.div`
+const Skeleton = styled.li`
   display: flex;
   column-gap: 8px;
   align-items: center;

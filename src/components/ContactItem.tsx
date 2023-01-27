@@ -46,6 +46,7 @@ const UserPic = styled.img`
   width: 72px;
   height: 72px;
 
+  background-color: var(--color-bg-secondary);
   border-radius: 50%;
 `;
 

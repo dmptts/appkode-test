@@ -39,9 +39,15 @@ export default function ContactList({ contacts }: IContactListProps) {
             {currentYearBirthdayContacts.map((contact) => (
               <ContactItem key={contact.id} contact={contact} />
             ))}
-            <ListSeparator>
-              <SeparatorText>{`${new Date().getFullYear() + 1}`}</SeparatorText>
-            </ListSeparator>
+
+            {currentYearBirthdayContacts.length !== 0 && (
+              <ListSeparator>
+                <SeparatorText>{`${
+                  new Date().getFullYear() + 1
+                }`}</SeparatorText>
+              </ListSeparator>
+            )}
+
             {nextYearByrthdayContacts.map((contact) => (
               <ContactItem key={contact.id} contact={contact} />
             ))}
