@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ContactFilter } from '../const';
+import { ContactsFilterTypes } from '../const';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { changeFilter } from '../store/filtersSlice';
 import { selectContactsFilter } from '../store/selectors';
@@ -14,14 +14,22 @@ export default function Filter() {
     <FilterContainer>
       <Tabs
         value={activeFilter}
-        clickHandler={(value: ContactFilter) => dispatch(changeFilter(value))}
+        clickHandler={(value: ContactsFilterTypes) =>
+          dispatch(changeFilter(value))
+        }
       >
-        <Tabs.TabItem value={ContactFilter.ALL}>Все</Tabs.TabItem>
-        <Tabs.TabItem value={ContactFilter.DESIGN}>Designers</Tabs.TabItem>
-        <Tabs.TabItem value={ContactFilter.ANALYTICS}>Analysts</Tabs.TabItem>
-        <Tabs.TabItem value={ContactFilter.MANAGMENT}>Managers</Tabs.TabItem>
-        <Tabs.TabItem value={ContactFilter.IOS}>iOS</Tabs.TabItem>
-        <Tabs.TabItem value={ContactFilter.ANDROID}>Android</Tabs.TabItem>
+        <Tabs.TabItem value={ContactsFilterTypes.ALL}>Все</Tabs.TabItem>
+        <Tabs.TabItem value={ContactsFilterTypes.DESIGN}>
+          Designers
+        </Tabs.TabItem>
+        <Tabs.TabItem value={ContactsFilterTypes.ANALYTICS}>
+          Analysts
+        </Tabs.TabItem>
+        <Tabs.TabItem value={ContactsFilterTypes.MANAGMENT}>
+          Managers
+        </Tabs.TabItem>
+        <Tabs.TabItem value={ContactsFilterTypes.IOS}>iOS</Tabs.TabItem>
+        <Tabs.TabItem value={ContactsFilterTypes.ANDROID}>Android</Tabs.TabItem>
       </Tabs>
     </FilterContainer>
   );

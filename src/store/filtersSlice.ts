@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ContactFilter } from '../const';
+import { ContactsFilterTypes } from '../const';
 
 interface IInitialState {
-  contacts: ContactFilter;
+  contacts: ContactsFilterTypes;
 }
 
 const initialState: IInitialState = {
-  contacts: ContactFilter.ALL,
+  contacts: ContactsFilterTypes.ALL,
 };
 
 const filtersSlice = createSlice({

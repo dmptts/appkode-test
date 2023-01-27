@@ -3,7 +3,7 @@ export interface IContact {
   [key: string]: string;
 }
 
-export const enum ContactFilter {
+export const enum ContactsFilterTypes {
   ALL = 'all',
   ANDROID = 'android',
   IOS = 'ios',

@@ -43,6 +43,7 @@ export default function Search() {
         />
         <SortingBtn onClick={() => openModal('contacts-sorting')}>
           <StyledListIcon />
+          Сортировка
         </SortingBtn>
       </InputWrapper>
     </SearchContainer>
@@ -141,6 +142,6 @@ const SortingBtn = styled.button`
   transform: translateY(-50%);
 
   &:hover ${StyledListIcon}, &:active ${StyledListIcon} {
-    fill: var(--color-text-default);
+    fill: var(--color-brand-violet);
   }
 `;
