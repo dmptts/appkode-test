@@ -14,8 +14,14 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useModal = () => {
   const dispatch = useAppDispatch();
   const activeModal = useAppSelector(selectOpenedModal);
-  const openModal = (value: string) => dispatch(openModalAction(value));
-  const closeModal = () => dispatch(closeModalAction());
+  const openModal = (value: string) => {
+    dispatch(openModalAction(value));
+    return;
+  };
+  const closeModal = () => {
+    dispatch(closeModalAction());
+    return;
+  };
 
   return { activeModal, openModal, closeModal };
 };

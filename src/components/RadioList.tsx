@@ -7,24 +7,30 @@ import React, {
 import styled from 'styled-components';
 import { visuallyHidden } from '../global-styles';
 
-interface IRadioListProps {
+interface IRadioListProps<T> {
   children:
     | ReactElement<PropsWithChildren<IRadioItemProps>>
     | ReactElement<PropsWithChildren<IRadioItemProps>>[];
   name: string;
-  value: string;
+  value: T;
+  changeHandler: (value: T) => void;
 }
 
-export default function RadioList({ children, name, value }: IRadioListProps) {
-  const [activeItem, setActiveItem] = useState<string>(value);
+export default function RadioList<T>({
+  children,
+  name,
+  value,
+  changeHandler,
+}: IRadioListProps<T>) {
+  const [activeItem, setActiveItem] = useState(value);
 
   const RadioItemsWithinjectedProps = React.Children.map(children, (child) => {
     return React.cloneElement(child, {
       name,
       isActive: activeItem === child.props.value,
-      clickHandler() {
-        setActiveItem(child.props.value);
-        child.props.clickHandler?.();
+      changeHandler() {
+        setActiveItem(child.props.value as T);
+        changeHandler?.(child.props.value as T);
       },
     });
   });
@@ -34,17 +40,16 @@ export default function RadioList({ children, name, value }: IRadioListProps) {
 
 interface IRadioItemProps extends InputHTMLAttributes<HTMLInputElement> {
   children: string;
-  value: string;
   isActive?: boolean;
-  clickHandler?: () => void;
+  changeHandler?: () => void;
 }
 
 function RadioItem(props: IRadioItemProps) {
-  const { children, id, isActive = false, clickHandler, ...restProps } = props;
+  const { children, id, isActive = false, changeHandler, ...restProps } = props;
 
   return (
     <RadioItemContainer>
-      <RadioItemLabel htmlFor={id} isActive={isActive} onClick={clickHandler}>
+      <RadioItemLabel htmlFor={id} isActive={isActive} onClick={changeHandler}>
         {children}
       </RadioItemLabel>
       <RadioItemInput type="radio" id={id} {...restProps} />
@@ -99,7 +104,7 @@ const RadioItemLabel = styled.label<{ isActive: boolean }>`
       width: 8px;
       height: 8px;
 
-      background-color: #;
+      background-color: var(--color-default-white);
       border-radius: 50%;
 
       transform: translate(-50%, -50%);
