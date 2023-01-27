@@ -18,3 +18,8 @@ export const enum ContactFilter {
   SUPPORT = 'support',
   ANALYTICS = 'analytics',
 }
+
+export const enum ContactsSortingTypes {
+  BY_BIRTHDAYS = 'byByrthdays',
+  BY_ALPHABET = 'byAphabet',
+}

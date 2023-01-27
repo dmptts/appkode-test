@@ -8,6 +8,8 @@ export const selectContactsLoadingStatus = (state: RootState) =>
   state.contacts.loading;
 export const selectContactsFilter = (state: RootState) => state.filter.contacts;
 export const selectContactsSearch = (state: RootState) => state.search.contacts;
+export const selectContactsSorting = (state: RootState) =>
+  state.sorting.contacts;
 
 export const selectContactsByDepartment = createSelector(
   [contactsSelectors.selectAll, selectContactsFilter],

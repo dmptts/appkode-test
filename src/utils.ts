@@ -55,3 +55,25 @@ export const formatPhoneNumber = (phoneNumber: string) => {
 export const addMinutesToDate = (date: Date, minutes: number) => {
   return date.getTime() + minutes * 1000 * 60;
 };
+
+export const sortByAlphabet = (a: string, b: string) => {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+};
+
+export const getNextBirthday = (birthdate: Date) => {
+  let currentDate = new Date();
+  let birthday = new Date(birthdate);
+  birthday.setFullYear(currentDate.getFullYear());
+
+  if (birthday.getTime() - currentDate.getTime() < 0) {
+    birthday.setFullYear(currentDate.getFullYear() + 1);
+  }
+
+  return birthday;
+};
+
+export const sortByBirthday = (a: Date, b: Date) => {
+  return getNextBirthday(a).getTime() - getNextBirthday(b).getTime();
+};

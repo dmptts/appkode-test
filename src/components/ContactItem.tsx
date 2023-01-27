@@ -9,7 +9,8 @@ interface IContactItemProps {
 }
 
 export default function ContactItem({ contact }: IContactItemProps) {
-  const { avatarUrl, firstName, lastName, userTag, position } = contact;
+  const { avatarUrl, firstName, lastName, userTag, position, birthday } =
+    contact;
 
   return (
     <StyledContactItem>

@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ContactsSortingTypes } from '../const';
 
 interface IInitialState {
-  contacts: 'birthday' | 'alphabet';
+  contacts: ContactsSortingTypes;
 }
 
 const initialState: IInitialState = {
-  contacts: 'alphabet',
+  contacts: ContactsSortingTypes.BY_ALPHABET,
 };
 
 const sortingSlice = createSlice({
