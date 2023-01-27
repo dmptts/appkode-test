@@ -39,7 +39,9 @@ export default function ContactList({ contacts }: IContactListProps) {
             {currentYearBirthdayContacts.map((contact) => (
               <ContactItem key={contact.id} contact={contact} />
             ))}
-            <ListSeparator />
+            <ListSeparator>
+              <SeparatorText>{`${new Date().getFullYear() + 1}`}</SeparatorText>
+            </ListSeparator>
             {nextYearByrthdayContacts.map((contact) => (
               <ContactItem key={contact.id} contact={contact} />
             ))}
@@ -66,8 +68,33 @@ const List = styled.ul`
 `;
 
 const ListSeparator = styled.li`
-  width: 100%;
-  height: 2px;
+  position: relative;
 
-  border-bottom: 2px solid black;
+  width: 100%;
+
+  color: var(--color-text-light-secondary);
+  text-align: center;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 24px;
+    right: 24px;
+    content: '';
+    z-index: -1;
+
+    height: 1px;
+    background-color: var(--color-text-light-secondary);
+  }
+`;
+
+const SeparatorText = styled.span`
+  display: block;
+  width: 160px;
+  margin: 0 auto;
+
+  color: var(--color-text-light-secondary);
+  text-align: center;
+
+  background-color: var(--color-default-white);
 `;

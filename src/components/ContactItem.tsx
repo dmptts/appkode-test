@@ -9,8 +9,7 @@ interface IContactItemProps {
 }
 
 export default function ContactItem({ contact }: IContactItemProps) {
-  const { avatarUrl, firstName, lastName, userTag, position, birthday } =
-    contact;
+  const { avatarUrl, firstName, lastName, userTag, position } = contact;
 
   return (
     <StyledContactItem>
@@ -34,7 +33,7 @@ export default function ContactItem({ contact }: IContactItemProps) {
   );
 }
 
-const StyledContactItem = styled.div`
+const StyledContactItem = styled.li`
   display: flex;
   column-gap: 8px;
   align-items: center;
