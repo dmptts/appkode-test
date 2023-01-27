@@ -2,14 +2,21 @@ import styled from 'styled-components';
 import { visuallyHidden } from '../global-styles';
 import { ReactComponent as SearchIcon } from './../images/icon-search.svg';
 import { ReactComponent as ListIcon } from './../images/icon-list.svg';
-import { useDebounce, useAppDispatch, useModal } from '../hooks';
+import {
+  useDebounce,
+  useAppDispatch,
+  useModal,
+  useAppSelector,
+} from '../hooks';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { setSearchTerm } from '../store/searchSlice';
+import { selectContactsSearch } from '../store/selectors';
 
 export default function Search() {
   const dispatch = useAppDispatch();
+  const storedSearchTerm = useAppSelector(selectContactsSearch);
   const { openModal } = useModal();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(storedSearchTerm);
   const debouncedSearch = useDebounce(searchQuery);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
