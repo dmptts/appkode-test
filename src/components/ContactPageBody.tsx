@@ -62,8 +62,14 @@ const StyledPhoneIcon = styled(PhoneIcon)`
 `;
 
 const ContactInfoList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
   margin: 0;
   padding: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
 
   list-style: none;
 `;
@@ -73,8 +79,8 @@ const ContactInfoItem = styled.li`
   justify-content: space-between;
   align-items: center;
   row-gap: 8px;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 `;
 
 const ItemLeft = styled.div`
@@ -93,4 +99,13 @@ const PhoneLink = styled.a`
   display: flex;
   align-items: center;
   column-gap: 12px;
+
+  &:hover,
+  &:active {
+    color: var(--color-brand-violet);
+  }
+
+  &:hover ${StyledPhoneIcon}, &:active ${StyledPhoneIcon} {
+    fill: var(--color-brand-violet);
+  }
 `;

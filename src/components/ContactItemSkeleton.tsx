@@ -20,7 +20,7 @@ const PulseAnimation = keyframes`
 
 const Skeleton = styled.li`
   display: flex;
-  column-gap: 8px;
+  column-gap: 16px;
   align-items: center;
 
   padding-top: 8px;

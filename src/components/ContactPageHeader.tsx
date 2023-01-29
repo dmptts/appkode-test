@@ -91,7 +91,7 @@ const NameWrapper = styled.div`
   display: flex;
   align-items: baseline;
   column-gap: 4px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 `;
 
 const Name = styled.h1`

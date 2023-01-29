@@ -35,11 +35,8 @@ export default function ContactItem({ contact }: IContactItemProps) {
 
 const StyledContactItem = styled.li`
   display: flex;
-  column-gap: 8px;
+  column-gap: 16px;
   align-items: center;
-
-  padding-top: 8px;
-  padding-bottom: 8px;
 `;
 
 const UserPic = styled.img`

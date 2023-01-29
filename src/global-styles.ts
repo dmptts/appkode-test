@@ -57,7 +57,7 @@ export default createGlobalStyle`
     --color-text-default: #050510;
     --color-text-light-primary: #97979b;
     --color-text-light-secondary: #c3c3c6;
-    --color-text-light-thirdly: 55555c;
+    --color-text-light-thirdly: #55555c;
     --color-bg: #f7f7f8;
     --color-bg-secondary: #f3f3f6;
     --color-bg-thirdly: #e5e5eb;

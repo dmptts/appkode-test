@@ -13,9 +13,14 @@ export default function ContactSkeletonList() {
 }
 
 const SkeletonList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+
   margin: 0;
   padding: 0;
-  padding-top: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 
   list-style: none;
 `;

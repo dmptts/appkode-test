@@ -65,10 +65,14 @@ export default function ContactList({ contacts }: IContactListProps) {
 }
 
 const List = styled.ul`
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+
   margin: 0;
   padding: 0;
-  padding-top: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   list-style: none;
 `;
