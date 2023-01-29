@@ -74,9 +74,6 @@ const CloseBtn = styled.button`
   right: 23px;
   z-index: 15;
 
-  display: flex;
-  align-items: center;
-  align-content: center;
   width: 24px;
   height: 24px;
 
