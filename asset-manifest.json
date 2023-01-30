@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.js": "/appkode-test/static/js/main.aaf0216d.js",
+    "static/js/787.a43b4d44.chunk.js": "/appkode-test/static/js/787.a43b4d44.chunk.js",
+    "static/media/inter-bold.woff": "/appkode-test/static/media/inter-bold.3a84061fa1e9573b4a9f.woff",
+    "static/media/inter-semibold.woff": "/appkode-test/static/media/inter-semibold.6d7d360a0832f5c43a22.woff",
+    "static/media/inter-medium.woff": "/appkode-test/static/media/inter-medium.484bd6e66988b594f558.woff",
+    "static/media/inter-regular.woff": "/appkode-test/static/media/inter-regular.f3ce705f806c10eb6e2d.woff",
+    "static/media/inter-bold.woff2": "/appkode-test/static/media/inter-bold.df454d31cb00344b1ff1.woff2",
+    "static/media/inter-semibold.woff2": "/appkode-test/static/media/inter-semibold.7249951440b8b2f3f6ba.woff2",
+    "static/media/inter-medium.woff2": "/appkode-test/static/media/inter-medium.d4b5441320ecab87d64a.woff2",
+    "static/media/inter-regular.woff2": "/appkode-test/static/media/inter-regular.ac03a6de9ea313009257.woff2",
+    "static/media/userpic-placeholder@2x.png": "/appkode-test/static/media/userpic-placeholder@2x.512126aa6cd6d4cc4760.png",
+    "index.html": "/appkode-test/index.html",
+    "static/media/icon-phone.svg": "/appkode-test/static/media/icon-phone.c227efff0e596fb584880f0d9d7c8f18.svg",
+    "static/media/icon-star.svg": "/appkode-test/static/media/icon-star.97e9c6bada4cc343471e689f893df027.svg",
+    "static/media/icon-x.svg": "/appkode-test/static/media/icon-x.41070b20bf7a657e778bd78dc7783c13.svg",
+    "static/media/icon-list.svg": "/appkode-test/static/media/icon-list.90ed9c1d700c81e92b6941118ad848de.svg",
+    "static/media/icon-chevron.svg": "/appkode-test/static/media/icon-chevron.ade5329fe9f2a4714a8d5771a45350a4.svg",
+    "static/media/icon-search.svg": "/appkode-test/static/media/icon-search.e828aa3d2060c2b8bdc0c1bbbc2ac5b3.svg",
+    "main.aaf0216d.js.map": "/appkode-test/static/js/main.aaf0216d.js.map",
+    "787.a43b4d44.chunk.js.map": "/appkode-test/static/js/787.a43b4d44.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.aaf0216d.js"
+  ]
+}
